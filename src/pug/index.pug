@@ -10,4 +10,8 @@ html(lang="ru")
   body.page
     h1.title Hello, webpack!
 
-    script(src="js/app.js")
+    include ../blocks/page-header/page-header.pug
+
+    script(src="js/script.min.js")
+    script(src="js/main.script.min.js")
+    script(src="js/vendors.script.min.js")
