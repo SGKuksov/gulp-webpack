@@ -1,5 +1,11 @@
-# Gulp start kit
+# [KL] Static
 
-## Todo
+## Npm scripts
 
-1. Инлайнить svg в страницу
+```bash
+# Сборка и слежение
+npm run dev
+
+# Сборка
+npm run build
+```
