@@ -1,4 +1,4 @@
-# [KL] Static
+# gulp-webpack
 
 ## Npm scripts
 
