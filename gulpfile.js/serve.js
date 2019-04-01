@@ -29,9 +29,15 @@ const serve = cb => {
     series(twig, browserSync.reload)
   );
 
-  watch([config.watch.scss, config.watch.blocks.scss], scss);
+  watch([config.watch.scss, config.watch.blocks.scss]).on(
+    'change',
+    series(scss, browserSync.reload)
+  );;
 
-  watch([config.watch.js, config.watch.blocks.js], javascript);
+  watch([config.watch.js, config.watch.blocks.js]).on(
+    'change',
+    series(javascript, browserSync.reload)
+  );
 
   watch(config.watch.img).on('change', series(img, browserSync.reload));
 
