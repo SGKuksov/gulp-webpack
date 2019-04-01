@@ -18,7 +18,11 @@ const serve = cb => {
     port: 8080
   });
 
-  watch([config.watch.pug, config.watch.blocks.pug]).on('change', series(pug, browserSync.reload));
+  watch([
+    config.watch.pug, 
+    config.watch.blocks.pug,
+    config.watch.template, 
+  ]).on('change', series(pug, browserSync.reload));
 
   watch([config.watch.twig, config.watch.blocks.twig]).on(
     'change',

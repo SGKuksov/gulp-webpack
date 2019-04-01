@@ -1,0 +1,30 @@
+@mixin hidden-up($breakpoint) {
+	@media screen and (min-width: $breakpoint) {
+		display: none !important;
+	}
+}
+
+@mixin hidden-down($breakpoint) {
+	@media screen and (max-width: $breakpoint) {
+		display: none !important;
+	}
+}
+
+@mixin media($breakpoint) {
+	@media screen and (max-width: $breakpoint - 1) {
+		@content;
+	}
+}
+
+@each $bp, $num in $grid-breakpoints {
+
+	.hidden-#{$bp}-up {
+		@include hidden-up($num);
+	}
+
+	.hidden-#{$bp}-down {
+		@include media($num) {
+			display: none !important;
+		}
+	}
+}

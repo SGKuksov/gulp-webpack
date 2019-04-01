@@ -7,7 +7,7 @@ module.exports = {
   output: `${root}/dist/`,
   src: {
     html: `${root}/src/pages/*.html`,
-    pug: `${root}/src/pug/*.pug`,
+    pug: `${root}/src/pages/*.pug`,
     twig: `${root}/src/twig/*.twig`,
     css: `${root}/src/assets/css/*.css`,
     scss: `${root}/src/assets/scss/style.scss`,
@@ -27,9 +27,10 @@ module.exports = {
     fonts: `${root}/dist/fonts/`
   },
   watch: {
-    pug: `src/pug/**/*.pug`,
+    pug: `src/pages/**/*.pug`,
+    template: `src/template/**/*.pug`,
     twig: `src/twig/**/*.twig`,
-    scss: `src/assets/scss/*.{scss,sass}`,
+    scss: `src/assets/scss/**/*.{scss,sass}`,
     js: `src/assets/js/*.js`,
     blocks: {
       scss: `src/blocks/**/*.{scss,sass}`,

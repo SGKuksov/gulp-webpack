@@ -1,0 +1,18 @@
+extends ../template/layout
+
+block vars
+  - var bodyClass = ''
+  - var footerClass = ''
+  - var headerClass = ''
+  - var pageTitle = ''
+  - var dir = ''
+  - var layout = ''
+
+block content
+  h1.title Hello, webpack!
+
+  include ../blocks/page-header/page-header.pug
+
+block popups
+
+block scripts

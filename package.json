@@ -8,7 +8,8 @@
     "eslint": "eslint --fix --ext .js --ignore-path .gitignore .",
     "stylelint": "stylelint --fix \"src/**/*.scss\" --syntax=scss",
     "lint": "eslint && stylelint",
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js",
+    "create": "node utils/createBlock.js"
   },
   "author": "SGKuksov",
   "license": "MIT",
@@ -41,6 +42,7 @@
     "gulp-svgstore": "^7.0.1",
     "gulp-twig": "^1.2.0",
     "gulp-uglify": "^3.0.2",
+    "mkdirp": "^0.5.1",
     "mocha": "^6.0.2",
     "mocha-eslint": "^5.0.0",
     "postcss-object-fit-images": "^1.1.2",
