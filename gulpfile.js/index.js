@@ -1,19 +1,15 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { series, parallel } = require('gulp');
 const { clean } = require('./clean');
 const { scss } = require('./scss');
 const { pug } = require('./pug');
-const { twig } = require('./twig');
+// const { twig } = require('./twig');
 const { javascript } = require('./javascript');
 const { img } = require('./img');
 const { fonts } = require('./fonts');
 const { serve } = require('./serve');
 const { svgSprite } = require('./svgSprite');
-const config = require('./config');
-
-// function jsTranspile(cb) {
-//   // body omitted
-//   cb();
-// }
+// const config = require('./config');
 
 // function jsBundle(cb) {
 //   // body omitted
@@ -31,7 +27,6 @@ const config = require('./config');
 // }
 
 if (process.env.NODE_ENV === 'production') {
-  // exports.build = series(transpile, minify);
   exports.default = series(
     clean,
     parallel(
@@ -46,7 +41,6 @@ if (process.env.NODE_ENV === 'production') {
     )
   );
 } else {
-  // exports.build = series(transpile, livereload);
   exports.default = series(
     clean,
     parallel(

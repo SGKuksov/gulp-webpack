@@ -1,6 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { src, dest } = require('gulp');
-const config = require('./config');
 const plumber = require('gulp-plumber');
+const config = require('./config');
 
 const img = cb => {
   src(config.src.img)

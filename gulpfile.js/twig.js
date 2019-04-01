@@ -1,11 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { src, dest } = require('gulp');
-const config = require('./config');
 const plumber = require('gulp-plumber');
 const prettyHtml = require('gulp-pretty-html');
+const twig = require('gulp-twig');
+const config = require('./config');
 
-const twig = cb => {
-  const twig = require('gulp-twig');
-  
+const compileTwig = cb => {
   src(config.src.twig)
     .pipe(plumber(config.notify))
     .pipe(twig())
@@ -22,4 +22,4 @@ const twig = cb => {
   cb();
 };
 
-exports.twig = twig;
+exports.twig = compileTwig;

@@ -1,7 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { src, dest } = require('gulp');
-const config = require('./config');
 const plumber = require('gulp-plumber');
 const webpack = require('webpack-stream');
+const config = require('./config');
 
 const javascript = cb => {
   src(config.src.js)

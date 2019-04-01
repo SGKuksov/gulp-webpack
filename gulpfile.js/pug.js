@@ -1,13 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { src, dest } = require('gulp');
-const config = require('./config');
 const plumber = require('gulp-plumber');
 const prettyHtml = require('gulp-pretty-html');
 const browserSync = require('browser-sync').create();
-const reload = browserSync.reload;
+const pug = require('gulp-pug');
+const config = require('./config');
 
-const pug = cb => {
-  const pug = require('gulp-pug');
-  
+const { reload } = browserSync;
+
+const compilePug = cb => {
   src(config.src.pug)
     .pipe(plumber(config.notify))
     .pipe(pug())
@@ -20,10 +21,10 @@ const pug = cb => {
       })
     )
     .pipe(dest(config.dest.pug))
-    .pipe(reload({stream: true}));
+    .pipe(reload({ stream: true }));
 
   cb();
 };
 
-exports.pug = pug;
+exports.pug = compilePug;
 exports.reload = reload;

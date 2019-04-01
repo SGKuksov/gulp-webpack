@@ -1,4 +1,5 @@
-const root = require("path").resolve(__dirname, "..");
+/* eslint-disable import/no-extraneous-dependencies */
+const root = require('path').resolve(__dirname, '..');
 const notify = require('gulp-notify');
 
 module.exports = {
@@ -41,7 +42,7 @@ module.exports = {
     fonts: `src/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`
   },
   notify: {
-    errorHandler: function(err) {
+    errorHandler(err) {
       notify.onError({
         title: 'Styles compilation error',
         message: err.message

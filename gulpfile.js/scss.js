@@ -1,5 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { src, dest } = require('gulp');
-const config = require('./config');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
@@ -10,7 +10,9 @@ const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const objectFitImages = require('postcss-object-fit-images');
 const browserSync = require('browser-sync').create();
-const reload = browserSync.reload;
+const config = require('./config');
+
+const { reload } = browserSync;
 
 const scss = cb => {
   // const cssnano = require('cssnano');
@@ -36,7 +38,7 @@ const scss = cb => {
     )
     .pipe(sourcemaps.write('/'))
     .pipe(dest(config.dest.css))
-    .pipe(reload({stream: true}))
+    .pipe(reload({ stream: true }))
     .pipe(rename('style.min.css'))
     .pipe(cleanCSS())
     .pipe(dest(config.dest.css));
