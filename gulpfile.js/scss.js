@@ -9,6 +9,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const objectFitImages = require('postcss-object-fit-images');
+const hash = require('gulp-hash');
 const browserSync = require('browser-sync').create();
 const config = require('./config');
 
@@ -41,7 +42,14 @@ const scss = cb => {
     .pipe(reload({ stream: true }))
     .pipe(rename('style.min.css'))
     .pipe(cleanCSS())
-    .pipe(dest(config.dest.css));
+    .pipe(hash())
+    .pipe(dest(config.dest.css))
+    // .pipe(hash.manifest('hash/assets.json', {
+    //   template: '<%= name %><%= hash %><%= ext %>',
+    //   deleteOld: true,
+    //   sourceDir: __dirname + '/dist/css'
+    // }))
+    // .pipe(dest(config.dest.css));
 
   cb();
 };

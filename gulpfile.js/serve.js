@@ -40,8 +40,10 @@ const serve = cb => {
   );
 
   watch(config.watch.img).on('change', series(img, browserSync.reload));
+  watch(config.watch.img).on('add', series(img, browserSync.reload));
 
   watch(config.watch.fonts).on('change', series(fonts, browserSync.reload));
+  watch(config.watch.fonts).on('add', series(fonts, browserSync.reload));
 
   watch([
     `${config.dest.html}*.html`,

@@ -4,6 +4,7 @@ const plumber = require('gulp-plumber');
 const prettyHtml = require('gulp-pretty-html');
 const browserSync = require('browser-sync').create();
 const pug = require('gulp-pug');
+// const inject = require('gulp-inject');
 const config = require('./config');
 
 const { reload } = browserSync;
@@ -20,6 +21,7 @@ const compilePug = cb => {
         content_unformatted: []
       })
     )
+    // .pipe(inject(src('../dist/js/*.js', {read: false}), {relative: true}))
     .pipe(dest(config.dest.pug))
     .pipe(reload({ stream: true }));
 

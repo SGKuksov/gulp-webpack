@@ -35,10 +35,10 @@ if (process.env.NODE_ENV === 'production') {
       // copyVendorsJs,
       // copyVendorsCss,
       svgSprite,
-      pug,
       javascript,
       scss
-    )
+      ),
+      pug,
   );
 } else {
   exports.default = series(

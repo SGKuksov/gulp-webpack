@@ -2,6 +2,7 @@
 const { src, dest } = require('gulp');
 const plumber = require('gulp-plumber');
 const webpack = require('webpack-stream');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('./config');
 
 const javascript = cb => {
@@ -30,6 +31,9 @@ const javascript = cb => {
             }
           ]
         },
+        plugins: [
+          // new BundleAnalyzerPlugin()
+        ],
         externals: {
           // jquery: 'jQuery',
           // lodash : {

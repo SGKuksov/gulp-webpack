@@ -1,15 +1,30 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { src, dest } = require('gulp');
 const plumber = require('gulp-plumber');
-const config = require('./config');
 const imagemin = require('gulp-imagemin');
+const webp = require('gulp-webp');
+const cache = require('gulp-cache');
+const config = require('./config');
 
 const img = cb => {
   src(config.src.img)
     .pipe(plumber(config.notify))
-    .pipe(imagemin({
-      verbose: true
-    }))
+    .pipe(
+      cache(
+        imagemin({
+          verbose: true
+        }),
+        {
+          name: 'imagemin'
+        }
+      )
+    )
+    .pipe(dest(config.dest.img))
+    .pipe(
+      cache(webp(), {
+        name: 'webp'
+      })
+    )
     .pipe(dest(config.dest.img));
 
   cb();
