@@ -7,11 +7,11 @@ const config = require('./config');
 const fonts = cb => {
   src(config.src.fonts)
     .pipe(plumber(config.notify))
-    .pipe(cache(
-      {
-        name: 'fonts'
-      }
-    ))
+    // .pipe(cache(
+    //   {
+    //     name: 'fonts'
+    //   }
+    // ))
     .pipe(dest(config.dest.fonts));
 
   cb();
