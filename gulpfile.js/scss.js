@@ -9,14 +9,12 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const objectFitImages = require('postcss-object-fit-images');
-const hash = require('gulp-hash');
 const browserSync = require('browser-sync').create();
 const config = require('./config');
 
 const { reload } = browserSync;
 
 const scss = cb => {
-  // const cssnano = require('cssnano');
   const plugins = [
     autoprefixer({
       browsers: ['last 2 version']
@@ -25,31 +23,23 @@ const scss = cb => {
       sort: true
     }),
     objectFitImages()
-    // cssnano()
   ];
 
   src(config.src.scss)
     .pipe(plumber(config.notify))
     .pipe(sourcemaps.init())
-    .pipe(postcss(plugins))
     .pipe(
       sass({
         outputStyle: 'expanded'
       })
     )
+    .pipe(postcss(plugins))
     .pipe(sourcemaps.write('/'))
     .pipe(dest(config.dest.css))
-    .pipe(reload({ stream: true }))
-    .pipe(rename('style.min.css'))
     .pipe(cleanCSS())
-    .pipe(hash())
+    .pipe(rename('style.min.css'))
     .pipe(dest(config.dest.css))
-    // .pipe(hash.manifest('hash/assets.json', {
-    //   template: '<%= name %><%= hash %><%= ext %>',
-    //   deleteOld: true,
-    //   sourceDir: __dirname + '/dist/css'
-    // }))
-    // .pipe(dest(config.dest.css));
+    .pipe(reload({ stream: true }));
 
   cb();
 };

@@ -4,6 +4,7 @@ const plumber = require('gulp-plumber');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const cache = require('gulp-cache');
+const flatten = require('gulp-flatten');
 const config = require('./config');
 
 const img = cb => {
@@ -19,6 +20,7 @@ const img = cb => {
         }
       )
     )
+    .pipe(flatten())
     .pipe(dest(config.dest.img))
     .pipe(
       cache(webp(), {

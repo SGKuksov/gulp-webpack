@@ -12,9 +12,11 @@ module.exports = {
     css: `${root}/src/assets/css/*.css`,
     scss: `${root}/src/assets/scss/style.scss`,
     js: `${root}/src/assets/js/app.js`,
-    img: `${root}/src/assets/img/*.{jpg,jpeg,png,svg,webp,gif}`,
-    svg: `${root}/src/assets/svg/*.svg`,
-    fonts: `${root}/src/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`
+    img: `${root}/src/assets/img/**/*.{jpg,jpeg,png,svg,webp,gif}`,
+    svg: `${root}/src/assets/svg/**/*.svg`,
+    fonts: `${root}/src/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`,
+    favicon: `${root}/src/assets/favicons/*.png`,
+    video: `${root}/src/assets/videos/*.{mp4,mov,mpeg}`
   },
   dest: {
     html: `${root}/dist/`,
@@ -24,7 +26,9 @@ module.exports = {
     js: `${root}/dist/js/`,
     img: `${root}/dist/img/`,
     svg: `${root}/dist/img/`,
-    fonts: `${root}/dist/fonts/`
+    fonts: `${root}/dist/fonts/`,
+    favicon: `${root}/src/template/favicons/`,
+    video: `${root}/dist/videos/`
   },
   watch: {
     pug: `src/pages/**/*.pug`,

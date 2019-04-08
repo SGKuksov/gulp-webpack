@@ -7,24 +7,11 @@ const { pug } = require('./pug');
 const { javascript } = require('./javascript');
 const { img } = require('./img');
 const { fonts } = require('./fonts');
+const { video } = require('./video');
+// const { favicons } = require('./favicons');
 const { serve } = require('./serve');
 const { svgSprite } = require('./svgSprite');
 // const config = require('./config');
-
-// function jsBundle(cb) {
-//   // body omitted
-//   cb();
-// }
-
-// function jsMinify(cb) {
-//   // body omitted
-//   cb();
-// }
-
-// function publish(cb) {
-//   // body omitted
-//   cb();
-// }
 
 if (process.env.NODE_ENV === 'production') {
   exports.default = series(
@@ -32,13 +19,13 @@ if (process.env.NODE_ENV === 'production') {
     parallel(
       img,
       fonts,
-      // copyVendorsJs,
-      // copyVendorsCss,
       svgSprite,
-      javascript,
-      scss
-      ),
       pug,
+      javascript,
+      video,
+      // favicons,
+      scss
+    )
   );
 } else {
   exports.default = series(
@@ -46,11 +33,11 @@ if (process.env.NODE_ENV === 'production') {
     parallel(
       img,
       fonts,
-      // copyVendorsJs,
-      // copyVendorsCss,
       svgSprite,
       pug,
       javascript,
+      video,
+      // favicons,
       scss
     ),
     serve
