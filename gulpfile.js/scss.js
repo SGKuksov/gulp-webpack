@@ -2,6 +2,7 @@
 const { src, dest } = require('gulp');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
+const wait = require('gulp-wait');
 const sourcemaps = require('gulp-sourcemaps');
 const cleanCSS = require('gulp-cleancss');
 const rename = require('gulp-rename');
@@ -28,6 +29,7 @@ const scss = cb => {
   src(config.src.scss)
     .pipe(plumber(config.notify))
     .pipe(sourcemaps.init())
+    .pipe(wait(200))
     .pipe(
       sass({
         outputStyle: 'expanded'
