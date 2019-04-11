@@ -5,6 +5,7 @@ const { scss } = require('./scss');
 const { pug } = require('./pug');
 // const { twig } = require('./twig');
 const { javascript } = require('./javascript');
+// const { jsdoc } = require('./jsdoc');
 const { img } = require('./img');
 const { fonts } = require('./fonts');
 const { video } = require('./video');
@@ -24,7 +25,8 @@ if (process.env.NODE_ENV === 'production') {
       javascript,
       video,
       // favicons,
-      scss
+      scss,
+      // jsdoc
     )
   );
 } else {

@@ -49,7 +49,7 @@ module.exports = {
   notify: {
     errorHandler(err) {
       notify.onError({
-        title: 'Styles compilation error',
+        title: 'Error',
         message: err.message
       })(err);
       this.emit('end');
