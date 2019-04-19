@@ -8,7 +8,7 @@ module.exports = {
   src: {
     html: `${root}/src/pages/*.html`,
     pug: `${root}/src/pages/*.pug`,
-    twig: `${root}/src/twig/*.twig`,
+    twig: `${root}/src/pages/*.twig`,
     css: `${root}/src/assets/css/*.css`,
     scss: `${root}/src/assets/scss/style.scss`,
     js: `${root}/src/assets/js/app.js`,
@@ -21,7 +21,7 @@ module.exports = {
   dest: {
     html: `${root}/dist/`,
     pug: `${root}/dist/`,
-    twig: `${root}/dist/twig/`,
+    twig: `${root}/dist/`,
     css: `${root}/dist/css/`,
     js: `${root}/dist/js/`,
     img: `${root}/dist/img/`,
@@ -32,8 +32,8 @@ module.exports = {
   },
   watch: {
     pug: `src/pages/**/*.pug`,
-    template: `src/template/**/*.pug`,
     twig: `src/twig/**/*.twig`,
+    template: `src/template/**/*.{pug,twig}`,
     scss: `src/assets/scss/**/*.{scss,sass}`,
     js: `src/assets/js/*.js`,
     blocks: {

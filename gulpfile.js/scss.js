@@ -11,9 +11,12 @@ const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const objectFitImages = require('postcss-object-fit-images');
 const browserSync = require('browser-sync').create();
+const size = require('gulp-size');
+const gulpif = require('gulp-if');
 const config = require('./config');
-
 const { reload } = browserSync;
+
+const isDev = process.env.NODE_ENV === 'development';
 
 const scss = cb => {
   const plugins = [
@@ -28,7 +31,7 @@ const scss = cb => {
 
   src(config.src.scss)
     .pipe(plumber(config.notify))
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(isDev, sourcemaps.init()))
     .pipe(wait(200))
     .pipe(
       sass({
@@ -36,10 +39,10 @@ const scss = cb => {
       })
     )
     .pipe(postcss(plugins))
-    .pipe(sourcemaps.write('/'))
-    .pipe(dest(config.dest.css))
-    .pipe(cleanCSS())
-    .pipe(rename('style.min.css'))
+    .pipe(gulpif(isDev, sourcemaps.write('/')))
+    .pipe(gulpif(!isDev, cleanCSS()))
+    .pipe(gulpif(!isDev, rename('style.min.css')))
+    .pipe(gulpif(!isDev, size()))
     .pipe(dest(config.dest.css))
     .pipe(reload({ stream: true }));
 

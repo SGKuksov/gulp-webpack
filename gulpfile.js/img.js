@@ -5,19 +5,25 @@ const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const cache = require('gulp-cache');
 const flatten = require('gulp-flatten');
+const gulpif = require('gulp-if');
 const config = require('./config');
+
+const isDev = process.env.NODE_ENV === 'development';
 
 const img = cb => {
   src(config.src.img)
     .pipe(plumber(config.notify))
     .pipe(
-      cache(
-        imagemin({
-          verbose: true
-        }),
-        {
-          name: 'imagemin'
-        }
+      gulpif(
+        !isDev,
+        cache(
+          imagemin({
+            verbose: true
+          }),
+          {
+            name: 'imagemin'
+          }
+        )
       )
     )
     .pipe(flatten())

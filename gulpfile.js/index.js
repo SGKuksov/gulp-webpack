@@ -8,11 +8,47 @@ const { javascript } = require('./javascript');
 // const { jsdoc } = require('./jsdoc');
 const { img } = require('./img');
 const { fonts } = require('./fonts');
-const { video } = require('./video');
+// const { video } = require('./video');
 // const { favicons } = require('./favicons');
 const { serve } = require('./serve');
 const { svgSprite } = require('./svgSprite');
 // const config = require('./config');
+
+const isDev = process.env.NODE_ENV === 'development';
+
+if (isDev) {
+  exports.default = series(
+    clean,
+    parallel(
+      img,
+      fonts,
+      svgSprite,
+      pug,
+      // twig,
+      javascript,
+      // video,
+      // favicons,
+      scss
+    ),
+    serve
+  );
+} else {
+  exports.default = series(
+    clean,
+    parallel(
+      img,
+      fonts,
+      svgSprite,
+      pug,
+      // twig,
+      javascript,
+      // video,
+      // favicons,
+      scss
+      // jsdoc
+    )
+  );
+}
 
 if (process.env.NODE_ENV === 'production') {
   exports.default = series(
@@ -22,10 +58,11 @@ if (process.env.NODE_ENV === 'production') {
       fonts,
       svgSprite,
       pug,
+      // twig,
       javascript,
-      video,
+      // video,
       // favicons,
-      scss,
+      scss
       // jsdoc
     )
   );
@@ -37,8 +74,9 @@ if (process.env.NODE_ENV === 'production') {
       fonts,
       svgSprite,
       pug,
+      // twig,
       javascript,
-      video,
+      // video,
       // favicons,
       scss
     ),

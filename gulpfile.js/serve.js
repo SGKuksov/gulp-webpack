@@ -4,11 +4,11 @@ const browserSync = require('browser-sync').create();
 const config = require('./config');
 const { scss } = require('./scss');
 const { pug } = require('./pug');
-const { twig } = require('./twig');
+// const { twig } = require('./twig');
 const { javascript } = require('./javascript');
 const { img } = require('./img');
 const { fonts } = require('./fonts');
-const { video } = require('./video');
+// const { video } = require('./video');
 // const { svgSprite } = require('./svgSprite');
 
 const serve = cb => {
@@ -27,10 +27,10 @@ const serve = cb => {
     series(pug, browserSync.reload)
   );
 
-  watch([config.watch.twig, config.watch.blocks.twig]).on(
-    'change',
-    series(twig, browserSync.reload)
-  );
+  // watch([config.watch.twig, config.watch.blocks.twig, config.watch.template]).on(
+  //   'change',
+  //   series(twig, browserSync.reload)
+  // );
 
   watch([config.watch.scss, config.watch.blocks.scss]).on(
     'change',
@@ -51,11 +51,11 @@ const serve = cb => {
   watch(config.watch.fonts).on('change', series(fonts, browserSync.reload));
   watch(config.watch.fonts).on('add', series(fonts, browserSync.reload));
 
-  watch([
-    `${config.dest.html}*.html`,
-    `${config.dest.js}*.js`,
-    `${config.dest.img}*.{jpg,jpeg,png,svg,webp,gif}`
-  ]).on('change', browserSync.reload);
+  // watch([
+  //   `${config.dest.html}*.html`,
+  //   `${config.dest.js}*.js`,
+  //   `${config.dest.img}*.{jpg,jpeg,png,svg,webp,gif}`
+  // ]).on('change', browserSync.reload);
 
   cb();
 };

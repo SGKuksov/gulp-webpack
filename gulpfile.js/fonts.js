@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { src, dest } = require('gulp');
 const plumber = require('gulp-plumber');
-const cache = require('gulp-cache');
+// const cache = require('gulp-cache');
 const config = require('./config');
 
 const fonts = cb => {

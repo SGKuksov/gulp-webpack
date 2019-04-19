@@ -6,7 +6,8 @@ const config = require('./config');
 const video = cb => {
   src(config.src.video)
     .pipe(plumber(config.notify))
-    .pipe(dest(config.dest.video))
+    .pipe(dest(config.dest.video));
+
   cb();
 };
 
