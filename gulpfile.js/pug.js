@@ -11,8 +11,6 @@ const config = require('./config');
 
 const { reload } = browserSync;
 
-const isDev = process.env.NODE_ENV === 'development';
-
 const compilePug = cb => {
   const prettyHtmlConfig = {
     indent_size: 2,
@@ -26,12 +24,12 @@ const compilePug = cb => {
     removeRedundantAttributes: true
   };
 
-  src(config.src.pug)
+  src(config.pug.src)
     .pipe(plumber(config.notify))
     .pipe(pug())
-    .pipe(gulpif(isDev, prettyHtml(prettyHtmlConfig), htmlmin(minifyHtmlConfig)))
+    .pipe(gulpif(config.isDev, prettyHtml(prettyHtmlConfig), htmlmin(minifyHtmlConfig)))
     // .pipe(inject(src('../dist/js/*.js', {read: false}), {relative: true}))
-    .pipe(dest(config.dest.pug))
+    .pipe(dest(config.pug.dest))
     .pipe(reload({ stream: true }));
 
   cb();

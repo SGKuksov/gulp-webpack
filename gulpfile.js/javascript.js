@@ -5,13 +5,11 @@ const webpack = require('webpack-stream');
 const config = require('./config');
 const webpackConfig = require('./webpack.config.js');
 
-// const isDev = process.env.NODE_ENV === 'development';
-
 const javascript = cb => {
-  src(config.src.js)
+  src(config.js.src)
     .pipe(plumber(config.notify))
     .pipe(webpack(webpackConfig))
-    .pipe(dest(config.dest.js));
+    .pipe(dest(config.js.dest));
 
   cb();
 };

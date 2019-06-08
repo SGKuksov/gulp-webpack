@@ -10,8 +10,6 @@ const config = require('./config');
 
 const { reload } = browserSync;
 
-const isDev = process.env.NODE_ENV === 'development';
-
 const compileTwig = cb => {
   const prettyHtmlConfig = {
     indent_size: 2,
@@ -25,11 +23,11 @@ const compileTwig = cb => {
     removeRedundantAttributes: true
   };
 
-  src(config.src.twig)
+  src(config.twig.src)
     .pipe(plumber(config.notify))
     .pipe(twig())
-    .pipe(gulpif(isDev, prettyHtml(prettyHtmlConfig), htmlmin(minifyHtmlConfig)))
-    .pipe(dest(config.dest.twig))
+    .pipe(gulpif(config.isDev, prettyHtml(prettyHtmlConfig), htmlmin(minifyHtmlConfig)))
+    .pipe(dest(config.twig.dest))
     .pipe(reload({ stream: true }));
 
   cb();

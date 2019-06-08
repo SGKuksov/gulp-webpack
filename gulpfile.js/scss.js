@@ -14,24 +14,21 @@ const browserSync = require('browser-sync').create();
 const size = require('gulp-size');
 const gulpif = require('gulp-if');
 const config = require('./config');
-const { reload } = browserSync;
 
-const isDev = process.env.NODE_ENV === 'development';
+const { reload } = browserSync;
 
 const scss = cb => {
   const plugins = [
-    autoprefixer({
-      browsers: ['last 2 version']
-    }),
+    autoprefixer(),
     mqpacker({
       sort: true
     }),
     objectFitImages()
   ];
 
-  src(config.src.scss)
+  src(config.scss.src)
     .pipe(plumber(config.notify))
-    .pipe(gulpif(isDev, sourcemaps.init()))
+    .pipe(gulpif(config.isDev, sourcemaps.init()))
     .pipe(wait(200))
     .pipe(
       sass({
@@ -39,12 +36,13 @@ const scss = cb => {
       })
     )
     .pipe(postcss(plugins))
-    .pipe(gulpif(isDev, sourcemaps.write('/')))
-    .pipe(gulpif(!isDev, cleanCSS()))
-    .pipe(gulpif(!isDev, rename('style.min.css')))
-    .pipe(gulpif(!isDev, size()))
-    .pipe(dest(config.dest.css))
-    .pipe(reload({ stream: true }));
+    .pipe(gulpif(config.isDev, sourcemaps.write('/')))
+    .pipe(gulpif(config.isDev, dest(config.css.dest)))
+    .pipe(reload({ stream: true }))
+    .pipe(gulpif(!config.isDev, cleanCSS()))
+    .pipe(gulpif(!config.isDev, rename('style.min.css')))
+    .pipe(gulpif(!config.isDev, size()))
+    .pipe(gulpif(!config.isDev, dest(config.css.dest)));
 
   cb();
 };

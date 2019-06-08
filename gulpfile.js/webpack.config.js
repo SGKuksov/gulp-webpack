@@ -5,13 +5,10 @@ const config = require('./config');
 module.exports = {
   mode: process.env.NODE_ENV,
   output: {
-    path: config.dest.js,
+    path: config.js.dest,
     filename: 'script.min.js'
   },
-  devtool: process.env.NODE_ENV === 'development' ? 'source-map' : false,
-  devServer: {
-    overlay: true
-  },
+  devtool: config.isDev ? 'source-map' : false,
   module: {
     rules: [
       {

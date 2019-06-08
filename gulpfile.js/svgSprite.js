@@ -6,11 +6,11 @@ const svgstore = require('gulp-svgstore');
 const config = require('./config');
 
 const svgSprite = cb => {
-  src(config.src.svg)
+  src(config.svg.src)
     .pipe(plumber(config.notify))
     .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename('sprite.svg'))
-    .pipe(dest(config.dest.svg));
+    .pipe(dest(config.svg.dest));
 
   cb();
 };

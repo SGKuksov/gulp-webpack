@@ -1,50 +1,56 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const root = require('path').resolve(__dirname, '..');
+const src = require('path').resolve(__dirname, '../src');
+const dest = require('path').resolve(__dirname, '../dist');
 const notify = require('gulp-notify');
 
 module.exports = {
-  entry: `${root}/src/`,
-  output: `${root}/dist/`,
-  src: {
-    html: `${root}/src/pages/*.html`,
-    pug: `${root}/src/pages/*.pug`,
-    twig: `${root}/src/pages/*.twig`,
-    css: `${root}/src/assets/css/*.css`,
-    scss: `${root}/src/assets/scss/style.scss`,
-    js: `${root}/src/assets/js/app.js`,
-    img: `${root}/src/assets/img/**/*.{jpg,jpeg,png,svg,webp,gif}`,
-    svg: `${root}/src/assets/svg/**/*.svg`,
-    fonts: `${root}/src/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`,
-    favicon: `${root}/src/assets/favicons/*.png`,
-    video: `${root}/src/assets/videos/*.{mp4,mov,mpeg}`
+  entry: src,
+  output: dest,
+  html: {
+    src: `${src}/pages/*.html`,
+    dest: `${dest}/`
   },
-  dest: {
-    html: `${root}/dist/`,
-    pug: `${root}/dist/`,
-    twig: `${root}/dist/`,
-    css: `${root}/dist/css/`,
-    js: `${root}/dist/js/`,
-    img: `${root}/dist/img/`,
-    svg: `${root}/dist/img/`,
-    fonts: `${root}/dist/fonts/`,
-    favicon: `${root}/src/template/favicons/`,
-    video: `${root}/dist/videos/`
+  pug: {
+    src: `${src}/pages/*.pug`,
+    dest: `${dest}/`,
+    watch: [`${src}/pages/**/*.pug`, `${src}/template/**/*.pug,`, `${src}/blocks/**/*.pug`]
   },
-  watch: {
-    pug: `src/pages/**/*.pug`,
-    twig: `src/twig/**/*.twig`,
-    template: `src/template/**/*.{pug,twig}`,
-    scss: `src/assets/scss/**/*.{scss,sass}`,
-    js: `src/assets/js/*.js`,
-    blocks: {
-      scss: `src/blocks/**/*.{scss,sass}`,
-      js: `src/blocks/**/*.js`,
-      pug: `src/blocks/**/*.pug`,
-      twig: `src/blocks/**/*.twig`
-    },
-    svg: `src/assets/svg/**/*.svg`,
-    img: `src/assets/img/**/*.{jpg,jpeg,png,svg,webp,gif}`,
-    fonts: `src/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`
+  twig: {
+    src: `${src}/pages/*.twig`,
+    dest: `${dest}/`,
+    watch: [`${src}/pages/**/*.twig`, `${src}/template/**/*.twig,`, `${src}/blocks/**/*.twig`]
+  },
+  css: {
+    src: `${src}/assets/css/*.css`,
+    dest: `${dest}/css/`
+  },
+  scss: {
+    src: `${src}/assets/scss/style.scss`,
+    watch: [`${src}/assets/scss/**/*.{scss,sass}`, `${src}/blocks/**/*.{scss,sass}`]
+  },
+  js: {
+    src: `${src}/assets/js/app.js`,
+    dest: `${dest}/js/`,
+    watch: [`${src}/assets/js/**/*.js`, `${src}/blocks/**/*.js`]
+  },
+  img: {
+    src: `${src}/assets/img/**/*.{jpg,jpeg,png,svg,webp}`,
+    dest: `${dest}/img/`,
+    watch: `${src}/assets/img/**/*.{jpg,jpeg,png,svg,webp,gif}`
+  },
+  svg: {
+    src: `${src}/assets/svg/**/*.svg`,
+    dest: `${dest}/img/`,
+    watch: `${src}/assets/svg/**/*.svg`
+  },
+  fonts: {
+    src: `${src}/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`,
+    dest: `${dest}/fonts/`,
+    watch: `${src}/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`
+  },
+  video: {
+    src: `${src}/assets/videos/*.{mp4,mov,mpeg}`,
+    dest: `${dest}/videos/`
   },
   notify: {
     errorHandler(err) {
@@ -54,5 +60,7 @@ module.exports = {
       })(err);
       this.emit('end');
     }
-  }
+  },
+  isDev: process.env.NODE_ENV === 'development',
+  isProd: process.env.NODE_ENV === 'production'
 };

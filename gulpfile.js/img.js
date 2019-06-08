@@ -11,29 +11,20 @@ const config = require('./config');
 const isDev = process.env.NODE_ENV === 'development';
 
 const img = cb => {
-  src(config.src.img)
+  src(config.img.src)
     .pipe(plumber(config.notify))
     .pipe(
       gulpif(
         !isDev,
-        cache(
-          imagemin({
-            verbose: true
-          }),
-          {
-            name: 'imagemin'
-          }
-        )
+        imagemin({
+          verbose: true
+        })
       )
     )
     .pipe(flatten())
-    .pipe(dest(config.dest.img))
-    .pipe(
-      cache(webp(), {
-        name: 'webp'
-      })
-    )
-    .pipe(dest(config.dest.img));
+    .pipe(dest(config.img.dest));
+  // .pipe(webp())
+  // .pipe(dest(config.img.dest));
 
   cb();
 };
