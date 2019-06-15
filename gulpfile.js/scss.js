@@ -10,6 +10,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const objectFitImages = require('postcss-object-fit-images');
+const postcssNormalize = require('postcss-normalize');
 const browserSync = require('browser-sync').create();
 const size = require('gulp-size');
 const gulpif = require('gulp-if');
@@ -19,6 +20,7 @@ const { reload } = browserSync;
 
 const scss = cb => {
   const plugins = [
+    postcssNormalize(),
     autoprefixer(),
     mqpacker({
       sort: true

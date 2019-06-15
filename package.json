@@ -7,7 +7,8 @@
     "build": "cross-env NODE_ENV=production gulp",
     "eslint": "eslint --fix --ext .js --ignore-path .gitignore .",
     "stylelint": "stylelint --fix \"src/**/*.scss\" --syntax=scss",
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js",
+    "publish": "npm run publish"
   },
   "author": "SGKuksov",
   "license": "MIT",
@@ -20,19 +21,17 @@
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "css-mqpacker": "^7.0.0",
-    "cssnano": "^4.1.10",
     "del": "^4.1.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-prettier": "^3.1.0",
+    "gh-pages": "^2.0.1",
     "gulp": "^4.0.2",
-    "gulp-cache": "^1.1.2",
     "gulp-cleancss": "^0.2.2",
     "gulp-concat": "^2.6.1",
     "gulp-flatten": "^0.4.0",
-    "gulp-hash": "^4.2.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^6.0.0",
@@ -45,7 +44,6 @@
     "gulp-pretty-html": "^2.0.10",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
-    "gulp-responsive": "^2.14.0",
     "gulp-sass": "^4.0.2",
     "gulp-size": "^3.0.0",
     "gulp-sourcemaps": "^2.6.5",
@@ -58,6 +56,7 @@
     "mkdirp": "^0.5.1",
     "mocha": "^6.1.4",
     "mocha-eslint": "^5.0.0",
+    "postcss-normalize": "^8.0.1",
     "postcss-object-fit-images": "^1.1.2",
     "prettier": "^1.18.2",
     "stylelint": "^10.1.0",
@@ -71,9 +70,19 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
-    "libvips": "0.0.2",
     "lodash": "^4.17.11",
     "popper.js": "^1.15.0",
     "svg4everybody": "^2.1.9"
+  },
+  "browserslist": {
+    "production": [
+      "last 2 version",
+      "> 1%",
+      "ie 10"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version"
+    ]
   }
 }
