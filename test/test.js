@@ -50,5 +50,6 @@ it('Можно чекать элементы по индексу', () => {
   list.done(1);
 
   // проверка
+  // eslint-disable-next-line no-unused-expressions
   expect(!list.items[1].isDone).to.be.false;
 });

@@ -2,7 +2,7 @@
 const { src, dest } = require('gulp');
 const plumber = require('gulp-plumber');
 const imagemin = require('gulp-imagemin');
-const webp = require('gulp-webp');
+// const webp = require('gulp-webp');
 const flatten = require('gulp-flatten');
 const gulpif = require('gulp-if');
 const config = require('./config');

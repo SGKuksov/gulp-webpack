@@ -1,4 +1,8 @@
 .page-header {
   min-height: 150px;
   background-color: #ccc;
+
+  &__inner {
+    padding: 10px;
+  }
 }

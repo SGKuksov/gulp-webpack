@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const ghpages = require('gh-pages');
 const config = require('./config');
 
@@ -10,7 +11,7 @@ const publish = () => {
         email: 'avvey2009@gmail.com'
       }
     },
-    function(err) {
+    err => {
       console.log(err);
     }
   );

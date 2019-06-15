@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { src, dest } = require('gulp');
+const { src } = require('gulp');
+const plumber = require('gulp-plumber');
 const htmlValidator = require('gulp-w3c-html-validator');
 const config = require('./config');
 

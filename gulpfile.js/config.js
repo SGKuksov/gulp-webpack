@@ -13,12 +13,12 @@ module.exports = {
   pug: {
     src: `${src}/pages/*.pug`,
     dest: `${dest}/`,
-    watch: [`${src}/pages/**/*.pug`, `${src}/template/**/*.pug,`, `${src}/blocks/**/*.pug`]
+    watch: [`src/pages/**/*.pug`, `src/template/**/*.pug,`, `src/blocks/**/*.pug`]
   },
   twig: {
     src: `${src}/pages/*.twig`,
     dest: `${dest}/`,
-    watch: [`${src}/pages/**/*.twig`, `${src}/template/**/*.twig,`, `${src}/blocks/**/*.twig`]
+    watch: [`src/pages/**/*.twig`, `src/template/**/*.twig,`, `src/blocks/**/*.twig`]
   },
   css: {
     src: `${src}/assets/css/*.css`,
@@ -26,27 +26,27 @@ module.exports = {
   },
   scss: {
     src: `${src}/assets/scss/style.scss`,
-    watch: [`${src}/assets/scss/**/*.{scss,sass}`, `${src}/blocks/**/*.{scss,sass}`]
+    watch: [`src/assets/scss/**/*.{scss,sass}`, `src/blocks/**/*.{scss,sass}`]
   },
   js: {
     src: `${src}/assets/js/app.js`,
     dest: `${dest}/js/`,
-    watch: [`${src}/assets/js/**/*.js`, `${src}/blocks/**/*.js`]
+    watch: [`src/assets/js/**/*.js`, `src/blocks/**/*.js`]
   },
   img: {
     src: `${src}/assets/img/**/*.{jpg,jpeg,png,svg,webp}`,
     dest: `${dest}/img/`,
-    watch: `${src}/assets/img/**/*.{jpg,jpeg,png,svg,webp,gif}`
+    watch: `src/assets/img/**/*.{jpg,jpeg,png,svg,webp,gif}`
   },
   svg: {
     src: `${src}/assets/svg/**/*.svg`,
     dest: `${dest}/img/`,
-    watch: `${src}/assets/svg/**/*.svg`
+    watch: `src/assets/svg/**/*.svg`
   },
   fonts: {
     src: `${src}/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`,
     dest: `${dest}/fonts/`,
-    watch: `${src}/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`
+    watch: `src/assets/fonts/**/*.{ttf,eot,svg,woff,woff2}`
   },
   video: {
     src: `${src}/assets/videos/*.{mp4,mov,mpeg}`,
